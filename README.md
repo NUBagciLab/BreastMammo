@@ -41,18 +41,15 @@ In each task, go to the corresponding folder then run
 
     ./main.sh [-model model_name] [-input_size size] [-data_path data_path]
 
-for CNNs. Here, [-input_size] can be 224 or 512, [-model] can be efficientnet_b0, densenet121, resnet50.
+Here, [-input_size] can be 224 or 512, [-model] can be efficientnet_b0, densenet121, resnet50, and Swin-T. Other models may be supported but not tested yet.
 
-    ./main_swin.sh [-input_size size] [-data_path data_path]
-
-for swin-T. Other models may be supported but not tested yet.
 For example:
 
-    ./main.sh -model efficientnet_b0 -input_size 224 -data_path /dataset/LUMINA_PNG
+    ./main.sh -model efficientnet_b0 -input_size 224 -data_path /dataset/BreastMammo_PNG
 
 You can get the test results by running the command like the following:
 
-    python fold_test.py --model --data-path /dataset/LUMINA_PNG --model efficientnet_b0 --input-size 224
+    python fold_test.py --model --data-path /dataset/BreastMammo_PNG --model efficientnet_b0 --input-size 224
 Here, [--input-size] can be 224 or 512, [--model] can be efficientnet_b0, densenet121, resnet50, or swin_t.
 
 The pretrained weights are available at https://huggingface.co/phy710/BreastMammo
