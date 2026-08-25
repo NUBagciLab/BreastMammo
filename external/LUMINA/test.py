@@ -3,10 +3,32 @@ import argparse
 import json
 import torch
 import torch.nn as nn
+from torchvision.transforms import v2
+from torch.utils.data import DataLoader
+from dataset import LUMINA_Density, MultiImagesDataset
 from model import get_model
-from train import load_data, test_fn
+from train import test_fn
 import matplotlib.pyplot as plt
 import numpy as np
+
+def load_data(args):
+    test_ds = []
+
+    transform_test = v2.Compose([
+        # v2.ToImage(), 
+        v2.Resize((args.input_size, args.input_size)),
+        v2.ToDtype(torch.float32, scale=True),
+        v2.Grayscale(num_output_channels=3),
+        v2.Normalize(mean=[0.485, 0.456, 0.406],
+                             std=[0.229, 0.224, 0.225])  # ImageNet normalization
+    ])
+            
+    test_data = LUMINA_Density(root = os.path.join(args.data_path, 'LUMINA_PNG'))
+    test_ds = MultiImagesDataset(test_data, transform=transform_test)
+    print(f"There are {len(test_data['label'])} testing samples.")
+
+    test_dataloader = DataLoader(test_ds, batch_size=args.batch_size, shuffle=False, num_workers=args.workers)
+    return test_dataloader
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="MammoFL")
@@ -22,7 +44,7 @@ if __name__ == "__main__":
     args.output_dir = os.path.join(args.output_dir, args.model+'_'+str(args.input_size))
         
     device = torch.device(args.device)
-    _, test_dataloader = load_data(args)
+    test_dataloader = load_data(args)
 
     model = get_model(name = args.model, num_classes = 4)
     model.to(device)
