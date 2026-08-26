@@ -115,7 +115,7 @@ You can get the test results by running the command like the following:
   <img src="figures/external.png" alt="" width="100%" />
 </p>
 
-# Citation
+# 📝 Citation
 If you use this dataset in your research, please cite our MICCAI paper:
 
     Hongyi Pan, Gorkem Durak, Halil Ertugrul Aktas, Andrea Mia Bejar, Mustafa Ege Seker, Nebile Alibeyoglu, Rumeysa Guclu, Rana Gunoz Comert Bozkurt, Sibel Ozkan Gurdal, Neslihan Cabioglu, Beyza Ozcinar, Ravza Yilmaz, Vahit Ozmen, Erkin Aribal, Sukru Mehmet Erturk, Yalda Zafari, Mohamed Mabrok, Kayhan Batmanghelich, Mohammad Yaqub, Ziyue Xu, Ulas Bagci. “BreastMammo and DenseMammo: Benchmarks for Mammography Domain Generalization.” MICCAI 2026.
