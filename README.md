@@ -65,7 +65,7 @@ In each task, go to the corresponding folder, then run
 
     ./main.sh [-model model_name] [-input_size size] [-data_path data_path]
 
-Here, [-input_size] can be 224 or 512, [-model] can be efficientnet_b0, densenet121, resnet50, and swin_t. Other models may be supported but are not tested yet.
+Here, `[-input_size]` can be `224` or `512`, `[-model]` can be `efficientnet_b0`, `densenet121`, `resnet50`, and `swin_t`. Other models may be supported but are not tested yet.
 
 For example:
 
@@ -74,8 +74,6 @@ For example:
 You can get the test results by running the command like the following:
 
     python fold_test.py --model --data-path /dataset/BreastMammo_PNG --model swin_t --input-size 224
-    
-Here, `[--input-size]` can be `224` or `512`, and `[--model]` can be `efficientnet_b0`, `densenet121`, `resnet50`, or `swin_t`.
 
 ## External Domain Generalization Evaluation
 Please use folders "generative" and "external" for this section.
