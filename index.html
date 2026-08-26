@@ -88,7 +88,7 @@
 
     <div class="summary-box">
         <p>
-            <strong>BreastMammo & DenseMammo introduce multi-view mammography benchmarks</strong> for breast density assessment and pathology diagnosis across disparate clinical domains[cite: 1]. We propose a <strong>foreground-only histogram matching</strong> protocol that decouples breast tissue style from anatomy, achieving a peak <strong>AUC of 98.32%</strong> on screening data and significantly outperforming MixStyle and Fourier-based domain generalization frameworks on unseen clinical sites (TNMammo & LUMINA)[cite: 1].
+            <strong>BreastMammo & DenseMammo introduce multi-view mammography benchmarks</strong> for breast density assessment and pathology diagnosis across disparate clinical domains. We propose a <strong>foreground-only histogram matching</strong> protocol that decouples breast tissue style from anatomy, achieving a peak <strong>AUC of 98.32%</strong> on screening data and significantly outperforming MixStyle and Fourier-based domain generalization frameworks on unseen clinical sites (TNMammo & LUMINA).
         </p>
     </div>
     
@@ -97,14 +97,14 @@
         <p align="center"><img src="figures/pipeline.png" alt="Multi-View Domain Generalization and Classification Pipeline"></p>
         
         <h2>Abstract</h2>
-        <p>Breast density classification is a critical component of breast cancer risk assessment, yet AI models often struggle to generalize across clinical sites due to vendor-specific acquisition styles[cite: 1]. In this work, we introduce two new datasets, BreastMammo and DenseMammo, to facilitate robust multi-view mammography research[cite: 1]. We propose a domain generalization framework that utilizes a foreground-only histogram matching protocol to resolve the domain shift issue arising from disparate clinical sources[cite: 1]. Internal evaluation using a 5-fold cross-validation protocol demonstrates the efficacy of our approach, with the Swin Transformer backbone achieving a peak AUC of 98.32% for density classification[cite: 1]. External evaluation on the TNMammo and LUMINA datasets demonstrates that the proposed approach consistently reduces domain shift, significantly outperforming prominent domain generalization paradigms, including MixStyle and Discrete-Fourier-Transform-based frameworks[cite: 1].</p>
+        <p>Breast density classification is a critical component of breast cancer risk assessment, yet AI models often struggle to generalize across clinical sites due to vendor-specific acquisition styles. In this work, we introduce two new datasets, BreastMammo and DenseMammo, to facilitate robust multi-view mammography research. We propose a domain generalization framework that utilizes a foreground-only histogram matching protocol to resolve the domain shift issue arising from disparate clinical sources. Internal evaluation using a 5-fold cross-validation protocol demonstrates the efficacy of our approach, with the Swin Transformer backbone achieving a peak AUC of 98.32% for density classification. External evaluation on the TNMammo and LUMINA datasets demonstrates that the proposed approach consistently reduces domain shift, significantly outperforming prominent domain generalization paradigms, including MixStyle and Discrete-Fourier-Transform-based frameworks.</p>
 
         <h2>Datasets</h2>
         <p align="center"><img src="figures/samples.png" alt="Representative Samples and Density Distributions"></p>
         <p>
             <ul>
-                <li><strong>BreastMammo:</strong> Diagnostic dataset comprising 894 images from 447 pathology-confirmed cases (576 benign, 318 malignant) with paired CC and MLO views, BI-RADS scores, and ACR breast density categories (A–D)[cite: 1].</li>
-                <li><strong>DenseMammo:</strong> Screening dataset comprising 2,480 images from 620 screening patients with standard 4-view sets (LCC, LMLO, RCC, RMLO) and expert breast density annotations[cite: 1].</li>
+                <li><strong>BreastMammo:</strong> Diagnostic dataset comprising 894 images from 447 pathology-confirmed cases (576 benign, 318 malignant) with paired CC and MLO views, BI-RADS scores, and ACR breast density categories (A–D).</li>
+                <li><strong>DenseMammo:</strong> Screening dataset comprising 2,480 images from 620 screening patients with standard 4-view sets (LCC, LMLO, RCC, RMLO) and expert breast density annotations.</li>
             </ul>
         </p>
 
