@@ -17,10 +17,61 @@ BreastMammo: https://osf.io/n4yr2/
 
 DenseMammo: https://osf.io/4azcr/
 
+We provide both 16-bit PNG format and the DICOM format. This repository uses the PNG files.
+
 # Pre-trained Weights:
 https://huggingface.co/phy710/BreastMammo
 
-# Generative Synthetic Images
+# 📌 Repository Structure
+
+The codebase is organized into modules corresponding to internal dataset benchmarks and external domain generalization evaluations:
+
+```text
+├── BreastMammo/
+│   ├── density/               # Breast density classification (5-fold CV)
+│   └── diagnosis/
+│       ├── single/            # Single-view pathology diagnosis (benign vs. malignant)
+│       └── two/               # Two-view (CC + MLO) pathology diagnosis
+├── DenseMammo/
+│   └── density/               # 4-view screening density classification (5-fold CV)
+├── external/
+│   ├── LUMINA/                # Unseen domain baseline evaluation (No DG)
+│   ├── LUMINA-Histogram/      # Proposed foreground-only histogram matching DG
+│   ├── LUMINA-DFT/            # Discrete Fourier Transform-based DG baseline
+│   └── LUMINA-MixStyle/       # Feature-level MixStyle DG baseline
+├── generative/
+│   ├── dft.py                 # DFT-based image style synthesis & background masking
+│   ├── histogram.py           # Foreground-only histogram matching generation
+│   ├── dataset.py             # Data loading for generative alignment
+│   └── seed.py                # Reproducibility seed configuration
+├── figures/                   # Visualizations for pipeline, samples, and benchmark plots
+├── LICENSE
+└── README.md
+```
+# 🚀 Usage & Experiments
+The trained weights are available at https://huggingface.co/phy710/BreastMammo. If you want to test our trained models, please download them and put the "saved" folder into the corresponding tasks. 
+
+## Internal Benchmarks
+
+### Training and Testing
+In each task, go to the corresponding folder, then run
+
+    ./main.sh [-model model_name] [-input_size size] [-data_path data_path]
+
+Here, [-input_size] can be 224 or 512, [-model] can be efficientnet_b0, densenet121, resnet50, and swin_t. Other models may be supported but are not tested yet.
+
+For example:
+
+    ./main.sh -model swin-T -input_size 224 -data_path /dataset/BreastMammo_PNG
+
+You can get the test results by running the command like the following:
+
+    python fold_test.py --model --data-path /dataset/BreastMammo_PNG --model swin_t --input-size 224
+    
+Here, [--input-size] can be 224 or 512, and [--model] can be efficientnet_b0, densenet121, resnet50, or swin_t.
+
+## External Domain Generalization Evaluation
+### Generative Synthetic Images
 You may run histogram.py or dft.py for histogram-based and DFT-based domain generation. You may revise the following code at lines 55--61 in histogram.py and lines 99--105 in dft.py to choose the source and reference dataset.
 
 To generate synthetic BreastMammo images in the DenseMammo domain:
@@ -28,7 +79,7 @@ To generate synthetic BreastMammo images in the DenseMammo domain:
     source_root = BreastMammo_root
     source = BreastMammo_density(root = BreastMammo_root)
     ref = DenseMammo_density(root= DenseMammo_root)
-
+This will generate folders BreastMammo_XXX_YYY, where XXX is "Histogram" or "DFT". YYY is "25", "50", "75", or "100", which stands for α in Eq (1) in our paper, multiplied by 100.
 
 To generate synthetic DenseMammo images in the BreastMammo domain:
 
@@ -36,23 +87,35 @@ To generate synthetic DenseMammo images in the BreastMammo domain:
     ref = BreastMammo_density(root = BreastMammo_root)
     source = DenseMammo_density(root= DenseMammo_root)
 
-# Training and Testing
-In each task, go to the corresponding folder then run
+This will generate folders DenseMammo_XXX_YYY.
+  
+Then you will put these generated folders where you store BreastMammo_PNG and DenseMammo_PNG (i.e., /dataset).
+
+## Training and Testing
+In each task, go to the corresponding folder, then run
 
     ./main.sh [-model model_name] [-input_size size] [-data_path data_path]
 
-Here, [-input_size] can be 224 or 512, [-model] can be efficientnet_b0, densenet121, resnet50, and Swin-T. Other models may be supported but not tested yet.
+Here, [-input_size] can be 224 or 512, [-model] can be efficientnet_b0, densenet121, resnet50, and swin_t. Other models may be supported but are not tested yet.
 
 For example:
 
-    ./main.sh -model efficientnet_b0 -input_size 224 -data_path /dataset/BreastMammo_PNG
+    ./main.sh -model swin-T -input_size 224 -data_path /dataset/
 
 You can get the test results by running the command like the following:
 
-    python fold_test.py --model --data-path /dataset/BreastMammo_PNG --model efficientnet_b0 --input-size 224
-Here, [--input-size] can be 224 or 512, [--model] can be efficientnet_b0, densenet121, resnet50, or swin_t.
+    python fold_test.py --model --data-path /dataset/ --model swin_t --input-size 224
+    
+Here, [--input-size] can be 224 or 512, and [--model] can be efficientnet_b0, densenet121, resnet50, or swin_t.
 
-The pretrained weights are available at https://huggingface.co/phy710/BreastMammo
+# Benchmark
+<p align="center">
+  <img src="figures/internal.png" alt="" width="100%" />
+</p>
+
+<p align="center">
+  <img src="figures/external.png" alt="" width="100%" />
+</p>
 
 # Citation
 If you use this dataset in your research, please cite our MICCAI paper:
