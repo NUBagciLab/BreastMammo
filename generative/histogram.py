@@ -16,33 +16,37 @@ import random
 from dataset import BreastMammo_density, DenseMammo_density
 from skimage.exposure import match_histograms
 
-def match_foreground_histogram(src_arr, ref_arr, ratio = 1):
-    """Foreground-isolated 16-bit histogram matching using scikit-image,
+def match_foreground_histogram(src_arr, ref_arr, ratio=1.0):
+    """Foreground-isolated histogram matching supporting arbitrary data types,
 
-    supporting arbitrary image sizes and blending control.
+    image shapes, and linear blending control.
     """
-    # 1. Automatically generate the foreground masks
     src_mask = src_arr > 0
     ref_mask = ref_arr > 0
 
-    # Fallback if either image foreground is completely empty
     if not np.any(src_mask) or not np.any(ref_mask):
         return src_arr.copy()
 
-    # 2. Extract 1D foreground pixel streams (can be entirely different shapes)
     src_pixels = src_arr[src_mask]
     ref_pixels = ref_arr[ref_mask]
 
-    # 3. Use skimage to match the 1D distribution pools
-    # Since these are 1D arrays, we set channel_axis=None
     matched_pixels = match_histograms(src_pixels, ref_pixels, channel_axis=None)
 
-    # 4. Apply the linear blending ratio (alpha)
-    blended_pixels = (1.0 - ratio) * src_pixels + ratio * matched_pixels
+    # Blend using float operations to prevent premature overflow/underflow
+    blended_pixels = (1.0 - ratio) * src_pixels.astype(np.float64) + ratio * matched_pixels.astype(np.float64)
 
-    # 5. Reconstruct the final image canvas
+    # Determine dynamic clipping bounds based on src_arr dtype
+    src_dtype = src_arr.dtype
+    if np.issubdtype(src_dtype, np.integer):
+        info = np.iinfo(src_dtype)
+        clipped_pixels = np.clip(np.round(blended_pixels), info.min, info.max).astype(src_dtype)
+    elif np.issubdtype(src_dtype, np.floating):
+        clipped_pixels = blended_pixels.astype(src_dtype)
+    else:
+        clipped_pixels = blended_pixels.astype(src_dtype)
+
     output_img = src_arr.copy()
-    output_img[src_mask] = np.clip(blended_pixels, 0, 65535).astype(np.uint16)
+    output_img[src_mask] = clipped_pixels
 
     return output_img
 
