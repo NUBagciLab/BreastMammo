@@ -80,7 +80,7 @@ Here, `[--input-size]` can be `224` or `512`, and `[--model]` can be `efficientn
 ## External Domain Generalization Evaluation
 Please use folders "generative" and "external" for this section.
 ### Generative Synthetic Images
-You may run `histogram.py` or `dft.py` for histogram-based and DFT-based domain generation. You may revise the following code at `lines 55--61` in `histogram.py` and `lines 99--105` in `dft.py` to choose the source and reference dataset.
+You may run `histogram.py` or `dft.py` for histogram-based and DFT-based domain generation. You may revise the following code at `lines 59--65` in `histogram.py` and `lines 99--105` in `dft.py` to choose the source and reference dataset.
 
 To generate synthetic BreastMammo images in the DenseMammo domain:
 
