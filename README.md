@@ -1,8 +1,11 @@
 # [MICCAI2026 Workshop Deep-Brea3th] BreastMammo and DenseMammo: Benchmarks for Mammography Domain Generalization 
+
+## Representative Samples And Density Distributions
 <p align="center">
   <img src="figures/samples.png" alt="" width="100%" />
 </p>
 
+## Histogram-Based Domain Generalization Pipeline
 <p align="center">
   <img src="figures/pipeline.png" alt="" width="100%" />
 </p>
