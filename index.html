@@ -93,9 +93,6 @@
     </div>
     
     <div class="content-section">
-        <h2>Method Overview</h2>
-        <p align="center"><img src="figures/pipeline.png" alt="Multi-View Domain Generalization and Classification Pipeline"></p>
-        
         <h2>Abstract</h2>
         <p>Breast density classification is a critical component of breast cancer risk assessment, yet AI models often struggle to generalize across clinical sites due to vendor-specific acquisition styles. In this work, we introduce two new datasets, BreastMammo and DenseMammo, to facilitate robust multi-view mammography research. We propose a domain generalization framework that utilizes a foreground-only histogram matching protocol to resolve the domain shift issue arising from disparate clinical sources. Internal evaluation using a 5-fold cross-validation protocol demonstrates the efficacy of our approach, with the Swin Transformer backbone achieving a peak AUC of 98.32% for density classification. External evaluation on the TNMammo and LUMINA datasets demonstrates that the proposed approach consistently reduces domain shift, significantly outperforming prominent domain generalization paradigms, including MixStyle and Discrete-Fourier-Transform-based frameworks.</p>
 
@@ -107,7 +104,10 @@
                 <li><strong>DenseMammo:</strong> Screening dataset comprising 2,480 images from 620 screening patients with standard 4-view sets (LCC, LMLO, RCC, RMLO) and expert breast density annotations.</li>
             </ul>
         </p>
-
+        
+        <h2>Domain Generalization Pipeline</h2>
+        <p align="center"><img src="figures/pipeline.png" alt="Multi-View Domain Generalization and Classification Pipeline"></p>
+        
         <h2>Internal Benchmarks</h2>
         <p align="center"><img src="figures/internal.png" alt="Internal Benchmark Evaluation Results"></p>
 
