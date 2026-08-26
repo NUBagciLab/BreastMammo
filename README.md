@@ -22,7 +22,7 @@ DenseMammo: https://osf.io/4azcr/
 
 We provide both 16-bit PNG and DICOM formats. This repository uses the PNG files.
 
-# Pre-trained Weights:
+# 🧠 Pre-trained Weights:
 https://huggingface.co/phy710/BreastMammo
 
 # 📌 Repository Structure
