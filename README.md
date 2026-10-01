@@ -120,4 +120,13 @@ You can get the test results by running the command like the following:
 # 📝 Citation
 If you use this dataset in your research, please cite our MICCAI paper:
 
-    Hongyi Pan, Gorkem Durak, Halil Ertugrul Aktas, Andrea Mia Bejar, Mustafa Ege Seker, Nebile Alibeyoglu, Rumeysa Guclu, Rana Gunoz Comert Bozkurt, Sibel Ozkan Gurdal, Neslihan Cabioglu, Beyza Ozcinar, Ravza Yilmaz, Vahit Ozmen, Erkin Aribal, Sukru Mehmet Erturk, Yalda Zafari, Mohamed Mabrok, Kayhan Batmanghelich, Mohammad Yaqub, Ziyue Xu, Ulas Bagci. “BreastMammo and DenseMammo: Benchmarks for Mammography Domain Generalization.” MICCAI 2026.
+    @InProceedings{PanHon_BreastMammo_MICCAISAT2026,
+            author = { Pan, Hongyi AND Durak, Gorkem AND Aktas, Halil Ertugrul AND Bejar, Andrea M. AND Seker, Mustafa Ege AND Alibeyoglu, Nebile AND Guclu, Rumeysa AND Bozkurt, Rana Gunoz Comert AND Gurdal, Sibel Ozkan AND Cabioglu, Neslihan AND Ozcinar, Beyza AND Yilmaz, Ravza AND Ozmen, Vahit AND Aribal, Erkin AND Erturk, Sukru Mehmet AND Zafari, Yalda AND Mabrok, Mohamed AND Batmanghelich, Kayhan AND Yaqub, Mohammad AND Xu, Ziyue AND Bagci, Ulas},
+            title = { { BreastMammo and DenseMammo: Benchmarks for Mammography Domain Generalization } },
+            booktitle = {Medical Image Computing and Computer Assisted Intervention -- MICCAI 2026 Workshops and Challenges},
+            year = {2026},
+            publisher = {Springer Nature Switzerland},
+            volume = {LNCS 17256},
+            month = {pending},
+            page = {pending}
+    }
