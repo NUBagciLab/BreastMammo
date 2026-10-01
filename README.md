@@ -15,6 +15,8 @@ Breast density classification is a critical component of breast cancer risk asse
 
 # 📄 Paper link:
 
+MICCAI: https://papers.miccai.org/miccai-2026-sat/Deep_Brea3th_021.html
+
 arXiv: https://arxiv.org/abs/2608.10271
 
 # 📊 Dataset:
